@@ -2,11 +2,20 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
+
 class RadioTest {
 
     @Test
+    public void test() {
+        Radio rad = new Radio(9,0,100,0);
+        Assertions.assertEquals(9, rad.getMaxStation());
+    Assertions.assertEquals(0, rad.getMinStation());
+    Assertions.assertEquals(0, rad.getCurrentStation());
+    }
+
+    @Test
     public void setCurrentStationMin() {
-        Radio rad = new Radio();
+        Radio rad = new Radio(9,0,100,0);
         rad.setCurrentStation(0);
         int expected = 0;
         int actual = rad.getCurrentStation();
@@ -15,7 +24,7 @@ class RadioTest {
 
     @Test
     public void setCurrentStationBelowAllowed() {
-        Radio rad = new Radio();
+        Radio rad = new Radio(9,0,100,0);
         rad.setCurrentStation(-1);
         int expected = 0;
         int actual = rad.getCurrentStation();
@@ -24,7 +33,7 @@ class RadioTest {
 
     @Test
     public void setCurrentStationBoundaryValuesOver() {
-        Radio rad = new Radio();
+        Radio rad = new Radio(9,0,100,0);
         rad.setCurrentStation(15);
         int expected = 0;
         int actual = rad.getCurrentStation();
@@ -33,7 +42,7 @@ class RadioTest {
 
     @Test
     public void setCurrentStationWithinTheSetValues() {
-        Radio rad = new Radio();
+        Radio rad = new Radio(9,0,100,0);
         rad.setCurrentStation(4);
         int expected = 4;
         int actual = rad.getCurrentStation();
@@ -42,7 +51,7 @@ class RadioTest {
 
     @Test
     public void next1() {
-        Radio rad = new Radio();
+        Radio rad = new Radio(10);
         rad.setCurrentStation(8);
         rad.next();
         int expected = 9;
@@ -52,7 +61,7 @@ class RadioTest {
 
     @Test
     public void next2() {
-        Radio rad = new Radio();
+        Radio rad = new Radio(9,0,100,0);
         rad.setCurrentStation(9);
         rad.next();
         int expected = 0;
@@ -62,7 +71,7 @@ class RadioTest {
 
     @Test
     public void prev1() {
-        Radio rad = new Radio();
+        Radio rad = new Radio(10);
         rad.setCurrentStation(9);
         rad.prev();
         int expected = 8;
@@ -72,7 +81,7 @@ class RadioTest {
 
     @Test
     public void prev2() {
-        Radio rad = new Radio();
+        Radio rad = new Radio(9,0,100,0);
         rad.setCurrentStation(0);
         rad.prev();
         int expected = 9;
@@ -82,7 +91,7 @@ class RadioTest {
 
     @Test
     public void setVolume1() {
-        Radio rad = new Radio();
+        Radio rad = new Radio(9,0,100,0);
         rad.setVolume(100);
         int expected = 100;
         int actual = rad.getVolume();
@@ -91,7 +100,7 @@ class RadioTest {
 
     @Test
     public void setVolume2() {
-        Radio rad = new Radio();
+        Radio rad = new Radio(9,0,100,0);
         rad.setVolume(0);
         int expected = 0;
         int actual = rad.getVolume();
@@ -100,7 +109,7 @@ class RadioTest {
 
     @Test
     public void setVolume3() {
-        Radio rad = new Radio();
+        Radio rad = new Radio(9,0,100,0);
         rad.setVolume(10);
         int expected = 10;
         int actual = rad.getVolume();
@@ -109,7 +118,7 @@ class RadioTest {
 
     @Test
     public void setVolume4() {
-        Radio rad = new Radio();
+        Radio rad = new Radio(9,0,100,0);
         rad.setVolume(-1);
         int expected = 0;
         int actual = rad.getVolume();
@@ -118,7 +127,7 @@ class RadioTest {
 
     @Test
     public void setVolume5() {
-        Radio rad = new Radio();
+        Radio rad = new Radio(9,0,100,0);
         rad.setVolume(101);
         int expected = 0;
         int actual = rad.getVolume();
@@ -127,7 +136,7 @@ class RadioTest {
 
     @Test
     public void setVolume6() {
-        Radio rad = new Radio();
+        Radio rad = new Radio(9,0,100,0);
         rad.setVolume(99);
         int expected = 99;
         int actual = rad.getVolume();
@@ -136,7 +145,7 @@ class RadioTest {
 
     @Test
     public void setVolume7() {
-        Radio rad = new Radio();
+        Radio rad = new Radio(9,0,100,0);
         rad.setVolume(1);
         int expected = 1;
         int actual = rad.getVolume();
@@ -145,7 +154,7 @@ class RadioTest {
 
     @Test
     public void upVolume1() {
-        Radio rad = new Radio();
+        Radio rad = new Radio(9,0,100,0);
         rad.setVolume(0);
         rad.upVolume();
         int expected = 1;
@@ -155,7 +164,7 @@ class RadioTest {
 
     @Test
     public void upVolume2() {
-        Radio rad = new Radio();
+        Radio rad = new Radio(9,0,100,0);
         rad.setVolume(99);
         rad.upVolume();
         int expected = 100;
@@ -165,7 +174,7 @@ class RadioTest {
 
     @Test
     public void upVolume3() {
-        Radio rad = new Radio();
+        Radio rad = new Radio(9,0,100,0);
         rad.setVolume(100);
         rad.upVolume();
         int expected = 100;
@@ -175,7 +184,7 @@ class RadioTest {
 
     @Test
     public void downVolume1() {
-        Radio rad = new Radio();
+        Radio rad = new Radio(9,0,100,0);
         rad.setVolume(100);
         rad.downVolume();
         int expected = 99;
@@ -185,7 +194,7 @@ class RadioTest {
 
     @Test
     public void downVolume2() {
-        Radio rad = new Radio();
+        Radio rad = new Radio(9,0,100,0);
         rad.setVolume(1);
         rad.downVolume();
         int expected = 0;
@@ -195,7 +204,7 @@ class RadioTest {
 
     @Test
     public void downVolume3() {
-        Radio rad = new Radio();
+        Radio rad = new Radio(9,0,100,0);
         rad.setVolume(0);
         rad.downVolume();
         int expected = 0;
